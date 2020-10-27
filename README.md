@@ -1,8 +1,21 @@
 <h1> user-register </h1>
 
 <h2> Basic API with user register feature, you can try out with insomnia </h2>
+<h3 align="center"> 🚧 Caution: Not finished yet  🚧 </h3>
 
-### 🚧 Caution: Not finished yet  🚧
+
+<p align="center">
+ <a href="#heavy_check_mark-features">Features</a> •
+ <a href="#checkered_flag-get-started">Get Started</a> • 
+ <a href="#arrow_forward-run">Run</a> • 
+ <a href="#beetle-debug">Debug</a> • 
+ <a href="#incoming_envelope-use-insomnia">Test it</a> •
+ <a href="#gear-technologies">Technologies</a> •
+ <a href="#open_book-styleguides">Styleguides</a> •
+ <a href="#made-with">Author</a>
+</p>
+
+
 
 ### :heavy_check_mark: Features
 
@@ -12,7 +25,7 @@
 - [ ] User delete
   
 
-<h3> :checkered_flag: Get started </h3>
+### :checkered_flag: Get started 
 
 Install:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
@@ -43,7 +56,7 @@ $ npm run dev:debug
 ```
 
 
-### :beetle: Tip for debug
+### :beetle: Debug
 
 ```bash
 # To debug the application correctly I recommend you:
@@ -64,12 +77,20 @@ $ npm run dev:debug
 
 ```
 
-### 🛠 Technologies
+### :incoming_envelope: Use Insomnia
+[Insomnia](https://insomnia.rest/)
+See [import and export request on insomnia](https://support.insomnia.rest/article/52-importing-and-exporting-data)
+```
+  With insomnia you can test the api whitout a frontend
+  Just download the json file I left in the code, and import on insomnia
+```
+
+### :gear: Technologies
 
 - [Node.js](https://nodejs.org/en/)
 - [Nodemon](https://nodemon.io/)
 - [Sucrase](https://sucrase.io/)
-- [Sequelize](https://sequelize.org/)
+- [Sequelize](https://sequelize.org/) - see the seeds sections too!
 - [Mysql](https://www.mysql.com/)
 - [Express](https://expressjs.com/pt-br/)
 - [Yup](https://github.com/jquense/yup)
