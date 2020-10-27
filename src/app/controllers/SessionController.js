@@ -7,7 +7,8 @@ import authConfig from '../../config/auth';
 class SessionController {
   async store(req, res) {
     try {
-      // Consistencia dos inputs passados
+      // using yup for validation
+
       const schema = Yup.object().shape({
         email: Yup.string().email().required(),
         password: Yup.string().required(),
@@ -19,7 +20,8 @@ class SessionController {
         });
       }
 
-      // Consistencia se o dado (constraint) confere na base
+      // the most important: checking if user exist
+
       const { email, password } = req.body;
 
       const user = await User.findOne({
@@ -34,7 +36,7 @@ class SessionController {
         });
       }
 
-      // Consistencia se a senha confere no Model
+      // now check the password
 
       await bcrypt.compare(password, user.password_hash).then((result) => {
         if (!result) {
@@ -47,8 +49,8 @@ class SessionController {
       const { id, name } = user;
 
       /**
-       * Em user: É passado para o jwt um cabecalho {id, name, email}, este será decodificado la na frente quando necessário;
-       * Em token: É passado a chave secreta (de sua preferência) e do tempo de expiração da chave;
+       * User: Informations that we need since the user is authorized
+       * Token: your key and your expire time
        */
 
       return res.json({

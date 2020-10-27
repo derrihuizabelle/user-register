@@ -8,7 +8,7 @@ module.exports = {
         {
           name: 'Administrador',
           email: 'admin@teste.com',
-          // 8 = Nível de criptografia. Recomendado: 8
+          // 8 =>  lvl of crypt
           password_hash: bcrypt.hashSync('123ABC', 8),
           created_at: new Date(),
           updated_at: new Date(),

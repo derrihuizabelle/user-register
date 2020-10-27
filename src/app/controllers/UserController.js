@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
-  // Cadastra um único registro
+  // Only a single register
   async store(req, res) {
     try {
       const schema = Yup.object().shape({
@@ -13,7 +13,7 @@ class UserController {
 
       if (!(await schema.isValid(req.body))) {
         return res.json({
-          error: 'Validation fails',
+          error: 'Validation faill',
         });
       }
 
@@ -43,7 +43,7 @@ class UserController {
 
   async update(req, res) {
     return res.status(200).json({
-      msg: 'Token is valid and you are authorized',
+      msg: 'To starfleet command, were authorized!',
     });
   }
 }

@@ -13,10 +13,10 @@ class DataBase {
   }
 
   init() {
-    // Inicializa conexao
+    // start conection
     this.connection = new Sequelize(DatabaseConfig);
 
-    // Percorre o vetor e acessa o método inicializador
+    // In each model, the connection is estabilished
     models.map((model) => model.init(this.connection));
   }
 }

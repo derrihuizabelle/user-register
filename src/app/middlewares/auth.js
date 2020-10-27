@@ -5,23 +5,24 @@ import authConfig from '../../config/auth';
 export default async (req, res, next) => {
   const { authorization } = req.headers;
 
-  // Ausência do token
+  // if theres no token
   if (!authorization) {
     return res.status(401).json({
-      error: 'Token not provider',
+      error: 'Token not provide',
     });
   }
 
-  // Desestruturação de vetor (Bearer, ...token)
+  // destructuring (Bearer, ...token)
   const [, token] = authorization.split(' ');
 
   try {
     /**
-     * É usado o promisify podemos usar o async/await
-     * ao invés do velho callback do verify()
+     * with promisify we can use async/await and avoid the verify old return
+     * promisify is a nodejs util
      */
+
     const { id } = await promisify(jwt.verify)(token, authConfig.secret);
-    // Incluir o userId dentro de todos os requires
+    // have the userId always on my request
     req.userId = id;
   } catch (error) {
     return res.status(401).json({
