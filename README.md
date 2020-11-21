@@ -21,8 +21,10 @@
 
 - [x] User Register
 - [x] Authenticate session
-- [ ] User update
-- [ ] User delete
+- [x] User update
+- [x] User delete
+- [x] User index
+- [x] User list
   
 
 ### :checkered_flag: Get started 
