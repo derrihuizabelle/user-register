@@ -1,38 +1,39 @@
 import { Router } from 'express';
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
-import AuthMiddleware from './app/middlewares/auth';
 
-// put the token on Bearer -> token
+import AuthMiddleware from './app/middlewares/auth';
+import userStoreValidation from './app/middlewares/validators/UserStoreValidation';
+import userGetByIdValidation from './app/middlewares/validators/UserGetByIdValidation';
+import StoreSessionValidation from './app/middlewares/validators/StoreSessionValidation';
 
 const router = new Router();
 
-router.get('/test', (req, res) => {
-  return res
-    .status(200)
-    .json({ message: 'Uss Enterprise to starfleet command, were online!' });
-});
+router.post('/new-user', userStoreValidation, UserController.store);
 
-router.get('/user-info', AuthMiddleware, (req, res) => {
-  return UserController.show(req, res);
-});
+router.post('/login', StoreSessionValidation, SessionController.store);
 
-router.get('/user-list', AuthMiddleware, (req, res) => {
-  return UserController.index(req, res);
-});
+router.get('/user-list', AuthMiddleware, UserController.index);
 
-router.post('/new-user', (req, res) => {
-  return UserController.store(req, res);
-});
+router.get(
+  '/user-info',
+  AuthMiddleware,
+  userGetByIdValidation,
+  UserController.show
+);
 
-router.post('/login', SessionController.store);
+router.put(
+  '/update-user',
+  AuthMiddleware,
+  userStoreValidation,
+  UserController.update
+);
 
-router.put('/update-user', AuthMiddleware, (req, res) => {
-  return UserController.update(req, res);
-});
-
-router.delete('/delete-user', AuthMiddleware, (req, res) => {
-  return UserController.delete(req, res);
-});
+router.delete(
+  '/delete-user',
+  userGetByIdValidation,
+  AuthMiddleware,
+  UserController.delete
+);
 
 export default router;
