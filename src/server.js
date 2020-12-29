@@ -1,3 +1,5 @@
+import { errors } from 'celebrate';
+
 import express from 'express';
 import routes from './routes';
 import './database';
@@ -9,6 +11,7 @@ class Server {
     this.startup = express();
     this.middleware();
     this.routes();
+    this.celebrate();
   }
 
   middleware() {
@@ -17,6 +20,10 @@ class Server {
 
   routes() {
     this.startup.use(routes);
+  }
+
+  celebrate() {
+    this.startup.use(errors());
   }
 }
 
