@@ -10,19 +10,11 @@ class Server {
   constructor() {
     this.startup = express();
     this.middleware();
-    this.routes();
-    this.celebrate();
   }
 
   middleware() {
     this.startup.use(express.json());
-  }
-
-  routes() {
     this.startup.use(routes);
-  }
-
-  celebrate() {
     this.startup.use(errors());
   }
 }
