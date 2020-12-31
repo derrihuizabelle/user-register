@@ -1,3 +1,5 @@
+import bcrypt from 'bcryptjs';
+
 import User from '../models/User';
 
 class UserService {
@@ -32,6 +34,8 @@ class UserService {
       throw new Error('User already exist');
     }
 
+    request.password_hash = await bcrypt.hash(request.password, 8);
+
     const { name, email } = await User.create({ ...request });
     return {
       name,
@@ -48,6 +52,15 @@ class UserService {
 
     if (!userExists) {
       throw new Error('User dont exist');
+    }
+
+    const passwordPersist = await bcrypt.compare(
+      request.password,
+      userExists.password_hash
+    );
+
+    if (!passwordPersist) {
+      request.password_hash = await bcrypt.hash(request.password, 8);
     }
 
     const { name, email } = await User.update(request, {

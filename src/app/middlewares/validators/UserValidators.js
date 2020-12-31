@@ -12,6 +12,7 @@ const updateUser = {
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().required(),
     email: Joi.string().email().required(),
+    password: Joi.string().min(6),
   }),
 };
 
