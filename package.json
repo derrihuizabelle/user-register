@@ -6,12 +6,21 @@
   "scripts": {
     "dev": "nodemon -r dotenv/config src/index",
     "dev:debug": "nodemon --inspect src/index",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "pretest": "cross-env NODE_ENV=test npm run db:reset"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
     "bcryptjs": "^2.4.3",
     "celebrate": "^13.0.4",
     "dotenv": "^8.2.0",
@@ -22,13 +31,16 @@
     "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^7.11.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.2",
-    "sucrase": "^3.15.0"
+    "sucrase": "^3.15.0",
+    "supertest": "^6.0.1"
   }
 }
