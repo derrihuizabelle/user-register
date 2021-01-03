@@ -9,7 +9,7 @@
  <a href="#checkered_flag-get-started">Get Started</a> • 
  <a href="#arrow_forward-run">Run</a> • 
  <a href="#beetle-debug">Debug</a> • 
- <a href="#incoming_envelope-use-insomnia">Test it</a> •
+ <a href="#incoming_envelope-test-it">Test it</a> •
  <a href="#gear-technologies">Technologies</a> •
  <a href="#open_book-styleguides">Styleguides</a> •
  <a href="#made-with">Author</a>
@@ -25,7 +25,7 @@
 - [x] User delete
 - [x] User index
 - [x] User list
-- [ ] Test Automation
+- [x] Tests
   
 
 ### :checkered_flag: Get started 
@@ -52,12 +52,8 @@ $ npm install
 # Run as development
 $ npm run dev
 
-# For debug
-$ npm run dev:debug
-
 # It will start at port:3333 - go for it! <http://localhost:3333>
 ```
-
 
 ### :beetle: Debug
 
@@ -78,14 +74,22 @@ $ npm run dev:debug
             ]
           }
 
+$ npm run dev:debug
+
 ```
 
-### :incoming_envelope: Use Insomnia
+### :incoming_envelope: Test it
 [Insomnia](https://insomnia.rest/)
 See [import and export request on insomnia](https://support.insomnia.rest/article/52-importing-and-exporting-data)
 ```
   With insomnia you can test the api whitout a frontend
   Just download the json file I left in the code, and import on insomnia
+  
+  If you want to, you can write more tests on the test folder 
+  $ npm run test
+  
+``` 
+```
 ```
 
 ### :gear: Technologies
@@ -96,9 +100,11 @@ See [import and export request on insomnia](https://support.insomnia.rest/articl
 - [Sequelize](https://sequelize.org/) - see the seeds sections too!
 - [Mysql](https://www.mysql.com/)
 - [Express](https://expressjs.com/pt-br/)
-- [Yup](https://github.com/jquense/yup)
+- [Celebrate](https://www.npmjs.com/package/celebrate)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 - [JWT](https://jwt.io/)
+- [Jest](https://jestjs.io/)
+- [Supertest](https://www.npmjs.com/package/supertest)
 
 
 ### :open_book: Styleguides
